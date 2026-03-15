@@ -3,10 +3,10 @@ from fastapi.responses import StreamingResponse
 import tempfile
 import os
 import httpx
+import pathlib # <--- Nueva importación para leer la extensión
 from .modelo137 import process_video, predict
 
 router = APIRouter(prefix="/video", tags=["Video Processing"])
-
 
 @router.get("/stream")
 async def stream_video(url: str):
@@ -47,15 +47,21 @@ async def predict_sign(video: UploadFile = File(...)):
     temp_file = None
     try:
         content = await video.read()
+        print(f"📦 Tamaño del video recibido: {len(content)} bytes")
 
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as tmp:
+        nombre_archivo = video.filename or "video.webm"
+        ext = pathlib.Path(nombre_archivo).suffix
+        if not ext:
+            ext = ".webm"
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
             tmp.write(content)
             temp_file = tmp.name
 
         clip = process_video(temp_file)
 
         if clip is None:
-            raise HTTPException(status_code=400, detail="No se pudieron extraer frames del video")
+            raise HTTPException(status_code=400, detail="No se pudieron extraer frames del video. Formato no soportado.")
 
         result = predict(clip)
         top5 = result["top5"]

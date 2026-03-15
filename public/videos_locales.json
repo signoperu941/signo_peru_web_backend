@@ -1,0 +1,612 @@
+{
+  "CONCEPTOS_Y_ESTADOS": {
+    "Conceptos_Abstractos": [
+      {
+        "palabra": "Diferente",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Diferente.mp4"
+      },
+      {
+        "palabra": "Lengua",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Lengua.mp4"
+      },
+      {
+        "palabra": "Lenguaje",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Lenguaje.mp4"
+      },
+      {
+        "palabra": "Ley",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Ley.mp4"
+      },
+      {
+        "palabra": "Norma",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Norma.mp4"
+      },
+      {
+        "palabra": "Paciencia",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Paciencia.mp4"
+      },
+      {
+        "palabra": "Reglamento",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Reglamento.mp4"
+      },
+      {
+        "palabra": "Tentación",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Tentación.mp4"
+      },
+      {
+        "palabra": "Viveza",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Conceptos_Abstractos/Viveza.mp4"
+      }
+    ],
+    "Estados_Emocionales": [
+      {
+        "palabra": "En paz",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Estados_Emocionales/En paz.mp4"
+      },
+      {
+        "palabra": "Envidia",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Estados_Emocionales/Envidia.mp4"
+      },
+      {
+        "palabra": "Estresado",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Estados_Emocionales/Estresado.mp4"
+      },
+      {
+        "palabra": "Preocupado (ligeramente)",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Estados_Emocionales/Preocupado (ligeramente).mp4"
+      },
+      {
+        "palabra": "Tranquilo",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Estados_Emocionales/Tranquilo.mp4"
+      }
+    ],
+    "Procesos_y_Cambios": [
+      {
+        "palabra": "Aprovechar algo",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Aprovechar algo.mp4"
+      },
+      {
+        "palabra": "Aprovecharse de algo",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Aprovecharse de algo.mp4"
+      },
+      {
+        "palabra": "Desaparecer",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Desaparecer.mp4"
+      },
+      {
+        "palabra": "Disminuir",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Disminuir.mp4"
+      },
+      {
+        "palabra": "Estancarse",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Estancarse.mp4"
+      },
+      {
+        "palabra": "Fracasar",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Fracasar.mp4"
+      },
+      {
+        "palabra": "Mejor",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Mejor.mp4"
+      },
+      {
+        "palabra": "Progresar",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Procesos_y_Cambios/Progresar.mp4"
+      }
+    ],
+    "Tiempo": [
+      {
+        "palabra": "Enero",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Tiempo/Enero.mp4"
+      },
+      {
+        "palabra": "Febrero",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Tiempo/Febrero.mp4"
+      },
+      {
+        "palabra": "Lunes",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Tiempo/Lunes.mp4"
+      },
+      {
+        "palabra": "Viernes",
+        "ruta_local": "/videos/CONCEPTOS_Y_ESTADOS/Tiempo/Viernes.mp4"
+      }
+    ]
+  },
+  "CUALIDADES_Y_PERCEPCIONES": {
+    "Colores_y_Cantidades": [
+      {
+        "palabra": "Amarillo",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Colores_y_Cantidades/Amarillo.mp4"
+      },
+      {
+        "palabra": "Completo",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Colores_y_Cantidades/Completo.mp4"
+      },
+      {
+        "palabra": "Lleno",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Colores_y_Cantidades/Lleno.mp4"
+      },
+      {
+        "palabra": "Pequeño",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Colores_y_Cantidades/Pequeño.mp4"
+      },
+      {
+        "palabra": "Verde",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Colores_y_Cantidades/Verde.mp4"
+      }
+    ],
+    "Dificultad": [
+      {
+        "palabra": "Difícil (de decir o hacer algo)",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Dificultad/Difícil (de decir o hacer algo).mp4"
+      },
+      {
+        "palabra": "Difícil",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Dificultad/Difícil.mp4"
+      },
+      {
+        "palabra": "Fácil",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Dificultad/Fácil.mp4"
+      },
+      {
+        "palabra": "Muy difícil",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Dificultad/Muy difícil.mp4"
+      },
+      {
+        "palabra": "Muy fácil",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Dificultad/Muy fácil.mp4"
+      }
+    ],
+    "Percepciones_Sensoriales": [
+      {
+        "palabra": "Calor",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Percepciones_Sensoriales/Calor.mp4"
+      },
+      {
+        "palabra": "Fresco",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Percepciones_Sensoriales/Fresco.mp4"
+      },
+      {
+        "palabra": "Huele bien",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Percepciones_Sensoriales/Huele bien.mp4"
+      },
+      {
+        "palabra": "Huele feo",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Percepciones_Sensoriales/Huele feo.mp4"
+      },
+      {
+        "palabra": "Huele normal",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Percepciones_Sensoriales/Huele normal.mp4"
+      },
+      {
+        "palabra": "Sucio",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Percepciones_Sensoriales/Sucio.mp4"
+      }
+    ],
+    "Precio_y_Dinero": [
+      {
+        "palabra": "Barato",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Barato.mp4"
+      },
+      {
+        "palabra": "Caro",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Caro.mp4"
+      },
+      {
+        "palabra": "Dar dinero (monto considerable)",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Dar dinero (monto considerable).mp4"
+      },
+      {
+        "palabra": "Dar mucho dinero",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Dar mucho dinero.mp4"
+      },
+      {
+        "palabra": "Dar poco dinero",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Dar poco dinero.mp4"
+      },
+      {
+        "palabra": "Dólares",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Dólares.mp4"
+      },
+      {
+        "palabra": "Muy caro",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Muy caro.mp4"
+      },
+      {
+        "palabra": "Soles",
+        "ruta_local": "/videos/CUALIDADES_Y_PERCEPCIONES/Precio_y_Dinero/Soles.mp4"
+      }
+    ]
+  },
+  "LUGARES_Y_GEOGRAFIA": {
+    "Conceptos_de_Ubicacion": [
+      {
+        "palabra": "Encaminado",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Conceptos_de_Ubicacion/Encaminado.mp4"
+      },
+      {
+        "palabra": "Ir a un lugar",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Conceptos_de_Ubicacion/Ir a un lugar.mp4"
+      },
+      {
+        "palabra": "Libre",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Conceptos_de_Ubicacion/Libre.mp4"
+      },
+      {
+        "palabra": "Ocupado",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Conceptos_de_Ubicacion/Ocupado.mp4"
+      },
+      {
+        "palabra": "Sin rumbo",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Conceptos_de_Ubicacion/Sin rumbo.mp4"
+      }
+    ],
+    "Conceptos_Geograficos": [
+      {
+        "palabra": "Turismo",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Conceptos_Geograficos/Turismo.mp4"
+      }
+    ],
+    "Espacios": [
+      {
+        "palabra": "Baño",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Espacios/Baño.mp4"
+      },
+      {
+        "palabra": "Lugar",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Espacios/Lugar.mp4"
+      },
+      {
+        "palabra": "Piscina",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Espacios/Piscina.mp4"
+      },
+      {
+        "palabra": "Area",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Espacios/Area.mp4"
+      }
+    ],
+    "Lugares_Geograficos": [
+      {
+        "palabra": "Distrito",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Lugares_Geograficos/Distrito.mp4"
+      },
+      {
+        "palabra": "País",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Lugares_Geograficos/País.mp4"
+      },
+      {
+        "palabra": "Provincia",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Lugares_Geograficos/Provincia.mp4"
+      },
+      {
+        "palabra": "Puno",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Lugares_Geograficos/Puno.mp4"
+      },
+      {
+        "palabra": "Venezuela",
+        "ruta_local": "/videos/LUGARES_Y_GEOGRAFIA/Lugares_Geograficos/Venezuela.mp4"
+      }
+    ]
+  },
+  "OBJETOS_Y_TECNOLOGIA": {
+    "Alimentos": [
+      {
+        "palabra": "Piña",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Alimentos/Piña.mp4"
+      },
+      {
+        "palabra": "Verduras",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Alimentos/Verduras.mp4"
+      }
+    ],
+    "Calzado": [
+      {
+        "palabra": "Zapatilla",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Calzado/Zapatilla.mp4"
+      },
+      {
+        "palabra": "Zapato alto (tacones)",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Calzado/Zapato alto (tacones).mp4"
+      },
+      {
+        "palabra": "Zapato",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Calzado/Zapato.mp4"
+      }
+    ],
+    "Objetos_Cotidianos": [
+      {
+        "palabra": "Basura",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Objetos_Cotidianos/Basura.mp4"
+      },
+      {
+        "palabra": "Certificado",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Objetos_Cotidianos/Certificado.mp4"
+      },
+      {
+        "palabra": "Diploma",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Objetos_Cotidianos/Diploma.mp4"
+      },
+      {
+        "palabra": "Multa",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Objetos_Cotidianos/Multa.mp4"
+      },
+      {
+        "palabra": "Título",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Objetos_Cotidianos/Título.mp4"
+      }
+    ],
+    "Tecnologia": [
+      {
+        "palabra": "Celular chico",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Tecnologia/Celular chico.mp4"
+      },
+      {
+        "palabra": "Celular grande",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Tecnologia/Celular grande.mp4"
+      },
+      {
+        "palabra": "Celular plus (extra grande)",
+        "ruta_local": "/videos/OBJETOS_Y_TECNOLOGIA/Tecnologia/Celular plus (extra grande).mp4"
+      }
+    ]
+  },
+  "PALABRAS_FUNCIONALES": {
+    "Funcionales": [
+      {
+        "palabra": "Hola",
+        "ruta_local": "/videos/PALABRAS_FUNCIONALES/Funcionales/Hola.mp4"
+      },
+      {
+        "palabra": "Ladrón",
+        "ruta_local": "/videos/PALABRAS_FUNCIONALES/Funcionales/Ladrón.mp4"
+      },
+      {
+        "palabra": "No",
+        "ruta_local": "/videos/PALABRAS_FUNCIONALES/Funcionales/No.mp4"
+      },
+      {
+        "palabra": "Pero",
+        "ruta_local": "/videos/PALABRAS_FUNCIONALES/Funcionales/Pero.mp4"
+      },
+      {
+        "palabra": "Ver",
+        "ruta_local": "/videos/PALABRAS_FUNCIONALES/Funcionales/Ver.mp4"
+      }
+    ]
+  },
+  "PERSONAS_Y_CARACTERISTICAS_FISICAS": {
+    "Apariencia_Fisica": [
+      {
+        "palabra": "Alto",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Alto.mp4"
+      },
+      {
+        "palabra": "Definido (en forma)",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Definido (en forma).mp4"
+      },
+      {
+        "palabra": "Enano",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Enano.mp4"
+      },
+      {
+        "palabra": "Feo",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Feo.mp4"
+      },
+      {
+        "palabra": "Flaco",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Flaco.mp4"
+      },
+      {
+        "palabra": "Gordo",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Gordo.mp4"
+      },
+      {
+        "palabra": "Musculoso",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Musculoso.mp4"
+      },
+      {
+        "palabra": "Muy alto",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Muy alto.mp4"
+      },
+      {
+        "palabra": "Muy flaco",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Muy flaco.mp4"
+      },
+      {
+        "palabra": "Muy gordo",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Apariencia_Fisica/Muy gordo.mp4"
+      }
+    ],
+    "Caracteristicas_Economicas": [
+      {
+        "palabra": "Adinerado",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Caracteristicas_Economicas/Adinerado.mp4"
+      },
+      {
+        "palabra": "Millonario",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Caracteristicas_Economicas/Millonario.mp4"
+      },
+      {
+        "palabra": "Muy pobre",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Caracteristicas_Economicas/Muy pobre.mp4"
+      },
+      {
+        "palabra": "Pobre",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Caracteristicas_Economicas/Pobre.mp4"
+      }
+    ],
+    "Personalidad_y_Roles": [
+      {
+        "palabra": "Enemigo",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Enemigo.mp4"
+      },
+      {
+        "palabra": "Gente",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Gente.mp4"
+      },
+      {
+        "palabra": "Incauto",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Incauto.mp4"
+      },
+      {
+        "palabra": "Independiente",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Independiente.mp4"
+      },
+      {
+        "palabra": "Líder",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Líder.mp4"
+      },
+      {
+        "palabra": "Miss",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Miss.mp4"
+      },
+      {
+        "palabra": "Multitud",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Multitud.mp4"
+      },
+      {
+        "palabra": "Padrino",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Padrino.mp4"
+      },
+      {
+        "palabra": "Persona",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Persona.mp4"
+      },
+      {
+        "palabra": "Profesor",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Profesor.mp4"
+      },
+      {
+        "palabra": "Vago",
+        "ruta_local": "/videos/PERSONAS_Y_CARACTERISTICAS_FISICAS/Personalidad_y_Roles/Vago.mp4"
+      }
+    ]
+  },
+  "VERBOS": {
+    "Acciones_Fisicas": [
+      {
+        "palabra": "Afeitar",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Afeitar.mp4"
+      },
+      {
+        "palabra": "Aguantar",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Aguantar.mp4"
+      },
+      {
+        "palabra": "Correr",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Correr.mp4"
+      },
+      {
+        "palabra": "Gritar",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Gritar.mp4"
+      },
+      {
+        "palabra": "Huir",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Huir.mp4"
+      },
+      {
+        "palabra": "Tocar a alguien",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Tocar a alguien.mp4"
+      },
+      {
+        "palabra": "Trotar",
+        "ruta_local": "/videos/VERBOS/Acciones_Fisicas/Trotar.mp4"
+      }
+    ],
+    "Acciones_Mentales": [
+      {
+        "palabra": "Analiza",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Analiza.mp4"
+      },
+      {
+        "palabra": "Aprender algo",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Aprender algo.mp4"
+      },
+      {
+        "palabra": "Aprender de todo",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Aprender de todo.mp4"
+      },
+      {
+        "palabra": "Conocimiento",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Conocimiento.mp4"
+      },
+      {
+        "palabra": "Fingir",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Fingir.mp4"
+      },
+      {
+        "palabra": "Olvidar",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Olvidar.mp4"
+      },
+      {
+        "palabra": "Pensar",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Pensar.mp4"
+      },
+      {
+        "palabra": "Poco conocimiento",
+        "ruta_local": "/videos/VERBOS/Acciones_Mentales/Poco conocimiento.mp4"
+      }
+    ],
+    "Acciones_Sociales": [
+      {
+        "palabra": "Castigar",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Castigar.mp4"
+      },
+      {
+        "palabra": "Compartir",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Compartir.mp4"
+      },
+      {
+        "palabra": "Discutir",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Discutir.mp4"
+      },
+      {
+        "palabra": "Fastidiar",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Fastidiar.mp4"
+      },
+      {
+        "palabra": "Ignorar a alguien un poco",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Ignorar a alguien un poco.mp4"
+      },
+      {
+        "palabra": "Ignorar por completo",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Ignorar por completo.mp4"
+      },
+      {
+        "palabra": "Reclamo",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Reclamo.mp4"
+      },
+      {
+        "palabra": "Salvar",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Salvar.mp4"
+      },
+      {
+        "palabra": "Visita",
+        "ruta_local": "/videos/VERBOS/Acciones_Sociales/Visita.mp4"
+      }
+    ],
+    "Acciones_Tecnologicas": [
+      {
+        "palabra": "En vivo",
+        "ruta_local": "/videos/VERBOS/Acciones_Tecnologicas/En vivo.mp4"
+      },
+      {
+        "palabra": "Escribir a Computadora",
+        "ruta_local": "/videos/VERBOS/Acciones_Tecnologicas/Escribir a Computadora.mp4"
+      },
+      {
+        "palabra": "Escribir a lápiz",
+        "ruta_local": "/videos/VERBOS/Acciones_Tecnologicas/Escribir a lápiz.mp4"
+      },
+      {
+        "palabra": "Escribir por celular",
+        "ruta_local": "/videos/VERBOS/Acciones_Tecnologicas/Escribir por celular.mp4"
+      },
+      {
+        "palabra": "Hackear",
+        "ruta_local": "/videos/VERBOS/Acciones_Tecnologicas/Hackear.mp4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+# Python bytecode (archivos compilados)
+__pycache__/
+*.pyc
+
+# Archivos de entorno virtual (opcional, pero muy recomendado)
+venv/
+.venv/
+env/
+
+# Variables de entorno (¡Seguridad!)
+.env

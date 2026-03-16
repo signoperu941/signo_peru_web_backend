@@ -1,24 +1,27 @@
-FROM python:3.10-slim
+FROM python:3.10-bookworm
 
-# Configuraciones para que Python corra más rapido y limpio en Docker
+# Variables de entorno
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Archivo de requerimientos
+# Librerías base de C++ para usar OpenCV y TensorFlow
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copia de requerimientos
 COPY requirements.txt .
 
-# Dependencias
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+# Instalación de dependencias
+RUN python -m pip install --no-cache-dir --upgrade pip && \
+    python -m pip install --no-cache-dir -r requirements.txt
 
-# Copia de todo el codigo backend y las carpetas de modelos/videos
 COPY . .
 
-# puerto de FastAPI
 EXPOSE 8000
 
-# Arranque de servidor
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Arranque con 4 workers
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

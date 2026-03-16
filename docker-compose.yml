@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # Backend
+  signoperu-api:
+    build: .
+    container_name: backend-ia
+    ports:
+      - "8000:8000"
+    restart: always
+
+  # Tunel de Cloudflare
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: tunnel-cloudflare
+    # Cambiar por token de cloudflare
+    command: tunnel --no-autoupdate run --token <token>
+    depends_on:
+      - signoperu-api

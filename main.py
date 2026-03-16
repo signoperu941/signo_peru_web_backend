@@ -12,11 +12,16 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 
+
 def get_real_ip(request: Request):
-    return request.headers.get("cf-connecting-ip", request.headers.get("x-forwarded-for", request.client.host))
+    return request.headers.get(
+        "cf-connecting-ip", request.headers.get("x-forwarded-for", request.client.host)
+    )
+
 
 # Máximo 60 peticiones por minuto por IP
 limiter = Limiter(key_func=get_real_ip, default_limits=["60/minute"])
+
 
 # ESCUDO DE TAMAÑO DE ARCHIVOS (PAYLOAD LIMIT)
 class LimitUploadSize(BaseHTTPMiddleware):
@@ -25,13 +30,13 @@ class LimitUploadSize(BaseHTTPMiddleware):
         self.max_upload_size = max_upload_size
 
     async def dispatch(self, request: Request, call_next):
-        if request.method == 'POST':
-            if 'content-length' in request.headers:
-                content_length = int(request.headers['content-length'])
+        if request.method == "POST":
+            if "content-length" in request.headers:
+                content_length = int(request.headers["content-length"])
                 if content_length > self.max_upload_size:
                     return Response(
-                        content="Payload Too Large: El video excede el límite permitido de 10MB.", 
-                        status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE
+                        content="Payload Too Large: El video excede el límite permitido de 10MB.",
+                        status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
                     )
         return await call_next(request)
 
@@ -61,7 +66,7 @@ app.add_middleware(
         "http://localhost:3000",
         "https://signo-peru-web-dun.vercel.app",
         "https://signo-peru-web-cesar424s-projects.vercel.app",
-        "https://api.buenfeps.site"
+        "https://api.buenfeps.site",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -78,6 +83,7 @@ else:
 app.include_router(busqueda.router)
 app.include_router(video.router)
 
+
 @app.get("/")
 async def root():
     return {
@@ -90,9 +96,10 @@ async def root():
             "prediccion": "/video/predict",
             "health": "/health",
             "documentacion": "/docs",
-            "videos": "/videos"
+            "videos": "/videos",
         },
     }
+
 
 @app.get("/health")
 async def health_check():
@@ -105,7 +112,9 @@ async def health_check():
         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
 
+
 if __name__ == "__main__":
     import uvicorn
+
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, workers=4)

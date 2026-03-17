@@ -1,4 +1,4 @@
-FROM python:3.10-bookworm
+FROM python:3.10-bullseye
 
 # Variables de entorno
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 # Instalación de dependencias
-RUN python -m pip install --no-cache-dir --upgrade pip && \
-    python -m pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 

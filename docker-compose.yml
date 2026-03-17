@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Backend
   signoperu-api:
@@ -13,7 +11,8 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: tunnel-cloudflare
-    # Cambiar por token de cloudflare
-    command: tunnel --no-autoupdate run --token <token>
+    # Tu comando con el protocolo http2 para saltar el firewall
+    command: tunnel --protocol http2 --no-autoupdate run --token <token>
+    restart: always
     depends_on:
       - signoperu-api

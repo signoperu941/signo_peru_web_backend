@@ -1,27 +1,27 @@
-FROM python:3.10-bullseye
+# 1. Imagen base ligera
+FROM python:3.10-slim-bullseye
 
-# Variables de entorno
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Librerías base de C++ para usar OpenCV y TensorFlow
+# 2. Librerías de C++ básicas
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia de requerimientos
 COPY requirements.txt .
 
-# Instalación de dependencias
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+# 3. Instalacion de 'uv'
+RUN pip install uv
+
+# 4. Instalacion de los requerimientos usando 'uv'
+RUN uv pip install --system --no-cache -r requirements.txt
 
 COPY . .
 
 EXPOSE 8000
 
-# Arranque con 4 workers
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

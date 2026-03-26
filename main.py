@@ -2,10 +2,14 @@ from fastapi import FastAPI, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.staticfiles import StaticFiles
-from routers import busqueda, video
+from routers import busqueda, video, donacion
 import os
 import socket
 from datetime import datetime
+from dotenv import load_dotenv
+
+# CARGAR VARIABLES DE ENTORNO ANTES DE INICIAR LA APP
+load_dotenv()
 
 # RATE LIMITING
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -59,7 +63,6 @@ app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(LimitUploadSize, max_upload_size=10_485_760)
 
 # CONFIGURACIÓN CORS
-# Borrar las URLs temporales y colocar Ssolo el dominio final.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -67,6 +70,8 @@ app.add_middleware(
         "https://signo-peru-web-dun.vercel.app",
         "https://signo-peru-web-cesar424s-projects.vercel.app",
         "https://api.buenfeps.site",
+        "https://signoperu.pages.dev",
+        "https://signoperu.ulima.edu.pe",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -82,6 +87,7 @@ else:
 # Incluir routers
 app.include_router(busqueda.router)
 app.include_router(video.router)
+app.include_router(donacion.router)
 
 
 @app.get("/")
@@ -97,6 +103,7 @@ async def root():
             "health": "/health",
             "documentacion": "/docs",
             "videos": "/videos",
+            "donacion": "/donacion/subir",
         },
     }
 

@@ -6,13 +6,15 @@ services:
     ports:
       - "8000:8000"
     restart: always
+    env_file:
+      - .env
 
   # Tunel de Cloudflare
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: tunnel-cloudflare
     # Tu comando con el protocolo http2 para saltar el firewall
-    command: tunnel --protocol http2 --no-autoupdate run --token eyJhIjoiMzQzYWZlN2FlN2UzZTE2NWMyZjExM2NlYzMwMjU2MDciLCJ0IjoiZjMzMTUxMjUtZDRlNy00NzA3LWIzN2UtMzIwMzFmODVjYzhiIiwicyI6Ik1qWmtaalF4T0dVdE5tWXdOQzAwWVRnMkxXRmpOelF0WXpCbU9UazVOVE14TXpObSJ9
+    command: tunnel --protocol http2 --no-autoupdate run --token 
     restart: always
     depends_on:
       - signoperu-api

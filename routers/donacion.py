@@ -2,13 +2,18 @@ from fastapi import APIRouter, UploadFile, Form, File, HTTPException
 import boto3
 import os
 import uuid
-import httpx
+import asyncpg  # NUEVA LIBRERÍA: Reemplaza a httpx para conectar a PostgreSQL
 from dotenv import load_dotenv
 
 # Cargar las variables del archivo .env
 load_dotenv()
 
 router = APIRouter(prefix="/donacion", tags=["Donación de Señas"])
+
+
+# Función auxiliar para obtener la conexión a la base de datos
+async def get_db_connection():
+    return await asyncpg.connect(os.getenv("DATABASE_URL"))
 
 
 @router.post("/subir")
@@ -22,31 +27,26 @@ async def subir_donacion(
     video: UploadFile = File(...),
 ):
     # VERIFICACIÓN DE DEGRADACIÓN
-    # Si falta el Bucket de R2 o el Token de D1, el módulo se considera "Apagado"
-    if not os.getenv("R2_BUCKET_NAME") or not os.getenv("CF_D1_API_TOKEN"):
+    # Ahora verificamos que MinIO y PostgreSQL estén configurados
+    if not os.getenv("MINIO_BUCKET_NAME") or not os.getenv("DATABASE_URL"):
         print(
-            "Aviso: Intento de uso de /donacion/subir, pero las credenciales no están configuradas. Módulo desactivado."
+            "Aviso: Intento de uso de /donacion/subir, pero las credenciales locales no están configuradas. Módulo desactivado."
         )
         return {
             "status": "construccion",
-            "message": "El módulo de donación se encuentra en construcción o no tiene las credenciales configuradas en el servidor.",
-            "archivo_r2": None,
+            "message": "El módulo de donación no tiene las credenciales configuradas en el servidor.",
+            "archivo_video": None,
         }
 
     try:
-        # Cargar variables dinámicamente solo si pasaron el chequeo
-        BUCKET_NAME = os.getenv("R2_BUCKET_NAME")
-        CF_ACCOUNT_ID = os.getenv("CF_ACCOUNT_ID")
-        CF_DATABASE_ID = os.getenv("CF_DATABASE_ID")
-        CF_D1_API_TOKEN = os.getenv("CF_D1_API_TOKEN")
-        D1_QUERY_URL = f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/d1/database/{CF_DATABASE_ID}/query"
+        BUCKET_NAME = os.getenv("MINIO_BUCKET_NAME")
 
-        # Inicializar el cliente S3 (R2) dinámicamente
+        # Inicializar el cliente S3 apuntando a MinIO
         s3_client = boto3.client(
             "s3",
-            endpoint_url=os.getenv("R2_ENDPOINT_URL"),
-            aws_access_key_id=os.getenv("R2_ACCESS_KEY_ID"),
-            aws_secret_access_key=os.getenv("R2_SECRET_ACCESS_KEY"),
+            endpoint_url=os.getenv("MINIO_ENDPOINT_URL"),  # Ej: http://minio:9000
+            aws_access_key_id=os.getenv("MINIO_ACCESS_KEY"),
+            aws_secret_access_key=os.getenv("MINIO_SECRET_KEY"),
         )
 
         # Leer el contenido del video
@@ -55,50 +55,40 @@ async def subir_donacion(
         # Generar un nombre único para el archivo
         extension = video.filename.split(".")[-1]
         nombre_archivo = f"{dni}_{uuid.uuid4().hex[:8]}.{extension}"
-        ruta_r2 = f"videos/{nombre_archivo}"
+        ruta_minio = f"videos/{nombre_archivo}"
 
-        # Subir el video a Cloudflare R2
+        # Subir el video a MinIO (La función S3 es exactamente la misma)
         s3_client.put_object(
             Bucket=BUCKET_NAME,
-            Key=ruta_r2,
+            Key=ruta_minio,
             Body=contenido_video,
             ContentType=video.content_type,
         )
 
-        # GUARDAR LOS DATOS EN CLOUDFLARE D1
-        headers = {
-            "Authorization": f"Bearer {CF_D1_API_TOKEN}",
-            "Content-Type": "application/json",
-        }
-
-        payload = {
-            "sql": "INSERT INTO donaciones (nombre, correo, dni, telefono, sena, firma_base64, video_url) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            "params": [nombre, correo, dni, telefono, sena, firma_base64, ruta_r2],
-        }
-
-        # Petición asíncrona a Cloudflare
-        async with httpx.AsyncClient() as client:
-            respuesta = await client.post(D1_QUERY_URL, headers=headers, json=payload)
-
-            if respuesta.status_code != 200:
-                print(f"Error HTTP de Cloudflare D1: {respuesta.text}")
-                raise Exception("Fallo en la comunicación con la API de D1")
-
-            datos_respuesta = respuesta.json()
-            if not datos_respuesta.get("success"):
-                errores = datos_respuesta.get("errors", [])
-                print(f"Error lógico de Cloudflare D1: {errores}")
-                raise Exception(f"D1 rechazó la consulta: {errores}")
+        # GUARDAR LOS DATOS EN POSTGRESQL ON-PREMISE
+        conn = await get_db_connection()
+        try:
+            # En PostgreSQL (usando asyncpg), los parámetros no son "?", son "$1", "$2", etc.
+            query = """
+                INSERT INTO donaciones (nombre, correo, dni, telefono, sena, firma_base64, video_url) 
+                VALUES ($1, $2, $3, $4, $5, $6, $7)
+            """
+            await conn.execute(
+                query, nombre, correo, dni, telefono, sena, firma_base64, ruta_minio
+            )
+        finally:
+            # Es vital cerrar la conexión después de usarla
+            await conn.close()
 
         print(
-            "--- NUEVA DONACIÓN RECIBIDA, SUBIDA A R2 Y GUARDADA EN CLOUDFLARE D1 ---"
+            "--- NUEVA DONACIÓN RECIBIDA, SUBIDA A MINIO Y GUARDADA EN POSTGRESQL ---"
         )
-        print(f"Usuario: {nombre} | DNI: {dni} | Seña: {sena} | Video: {ruta_r2}")
+        print(f"Usuario: {nombre} | DNI: {dni} | Seña: {sena} | Video: {ruta_minio}")
 
         return {
             "status": "success",
-            "message": "Datos guardados en D1 y video en R2 exitosamente",
-            "archivo_r2": ruta_r2,
+            "message": "Datos guardados en PostgreSQL y video en MinIO exitosamente",
+            "archivo_video": ruta_minio,
         }
 
     except Exception as e:
@@ -112,42 +102,34 @@ async def subir_donacion(
 @router.get("/listar")
 async def listar_donaciones():
     # VERIFICACIÓN DE DEGRADACIÓN
-    if not os.getenv("CF_D1_API_TOKEN"):
+    if not os.getenv("DATABASE_URL"):
         return {
             "status": "construccion",
             "total": 0,
             "donaciones": [],
-            "message": "Credenciales de D1 no configuradas.",
+            "message": "Credenciales de PostgreSQL no configuradas.",
         }
 
     try:
-        CF_ACCOUNT_ID = os.getenv("CF_ACCOUNT_ID")
-        CF_DATABASE_ID = os.getenv("CF_DATABASE_ID")
-        CF_D1_API_TOKEN = os.getenv("CF_D1_API_TOKEN")
-        D1_QUERY_URL = f"https://api.cloudflare.com/client/v4/accounts/{CF_ACCOUNT_ID}/d1/database/{CF_DATABASE_ID}/query"
+        conn = await get_db_connection()
+        try:
+            # Consulta SQL tradicional
+            query = "SELECT id, nombre, correo, dni, telefono, sena, video_url, fecha FROM donaciones ORDER BY fecha DESC"
 
-        headers = {
-            "Authorization": f"Bearer {CF_D1_API_TOKEN}",
-            "Content-Type": "application/json",
-        }
+            # fetch() ejecuta la consulta y trae todos los registros
+            registros = await conn.fetch(query)
 
-        payload = {
-            "sql": "SELECT id, nombre, correo, dni, telefono, sena, video_url, fecha FROM donaciones ORDER BY fecha DESC"
-        }
+            # Convertimos los registros de Postgres a una lista de diccionarios para poder devolverlos como JSON
+            donaciones = [dict(registro) for registro in registros]
 
-        async with httpx.AsyncClient() as client:
-            respuesta = await client.post(D1_QUERY_URL, headers=headers, json=payload)
-
-            if respuesta.status_code != 200 or not respuesta.json().get("success"):
-                raise Exception("Fallo al obtener datos de D1")
-
-            datos_d1 = respuesta.json()
-            donaciones = datos_d1["result"][0]["results"]
+        finally:
+            await conn.close()
 
         return {"status": "success", "total": len(donaciones), "donaciones": donaciones}
 
     except Exception as e:
         print(f"Error al listar: {str(e)}")
         raise HTTPException(
-            status_code=500, detail="Error interno al consultar la base de datos D1"
+            status_code=500,
+            detail="Error interno al consultar la base de datos PostgreSQL",
         )

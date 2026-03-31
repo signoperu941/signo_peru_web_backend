@@ -7,9 +7,8 @@ import cv2
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 
-# =============================
+
 # CONFIGURACION
-# =============================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "..", "modelo_137_clases", "modelo_tf")
 CLASS_MAPPING_PATH = os.path.join(BASE_DIR, "..", "class_mapping.json")
@@ -17,9 +16,7 @@ CLASS_MAPPING_PATH = os.path.join(BASE_DIR, "..", "class_mapping.json")
 CLIP_LEN = 24
 FRAME_SIZE = 192
 
-# =============================
 # CARGA DEL MODELO
-# =============================
 with open(CLASS_MAPPING_PATH, "r", encoding="utf-8") as f:
     idx_to_class = {v: k for k, v in json.load(f).items()}
 
@@ -33,9 +30,8 @@ INPUT_KEY = list(infer_fn.structured_input_signature[1].keys())[0]
 OUTPUT_KEY = list(infer_fn.structured_outputs.keys())[0]
 print(f"[modelo-137] Listo | Input: {INPUT_KEY} | Output: {OUTPUT_KEY}")
 
-# =============================
+
 # FUNCIONES
-# =============================
 def process_video(video_path):
     cap = cv2.VideoCapture(video_path)
     frames = []
@@ -54,11 +50,15 @@ def process_video(video_path):
     if total >= CLIP_LEN:
         indices = np.linspace(0, total - 1, CLIP_LEN).astype(int)
     else:
-        indices = np.concatenate([np.arange(total), np.full(CLIP_LEN - total, total - 1, dtype=int)])
+        indices = np.concatenate(
+            [np.arange(total), np.full(CLIP_LEN - total, total - 1, dtype=int)]
+        )
 
     processed = []
     for i in indices:
-        f = cv2.resize(frames[i], (FRAME_SIZE, FRAME_SIZE), interpolation=cv2.INTER_LINEAR)
+        f = cv2.resize(
+            frames[i], (FRAME_SIZE, FRAME_SIZE), interpolation=cv2.INTER_LINEAR
+        )
         f = f.astype(np.float32) / 255.0
         processed.append(np.transpose(f, (2, 0, 1)))
 
@@ -68,7 +68,9 @@ def process_video(video_path):
 
 
 def predict(clip):
-    logits = infer_fn(**{INPUT_KEY: tf.constant(clip, dtype=tf.float32)})[OUTPUT_KEY].numpy()
+    logits = infer_fn(**{INPUT_KEY: tf.constant(clip, dtype=tf.float32)})[
+        OUTPUT_KEY
+    ].numpy()
 
     exp_logits = np.exp(logits - np.max(logits, axis=1, keepdims=True))
     probs = (exp_logits / np.sum(exp_logits, axis=1, keepdims=True))[0]
@@ -92,10 +94,7 @@ def predict(clip):
 
     # Top5 renormalizado para mostrar en UI
     top5_renorm = [
-        {
-            "palabra": p["palabra"],
-            "confianza": round(p["confianza"] / total * 100, 2)
-        }
+        {"palabra": p["palabra"], "confianza": round(p["confianza"] / total * 100, 2)}
         for p in top5_raw
     ]
 

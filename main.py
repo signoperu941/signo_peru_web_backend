@@ -8,7 +8,7 @@ import socket
 from datetime import datetime
 from dotenv import load_dotenv
 
-# CARGAR VARIABLES DE ENTORNO ANTES DE INICIAR LA APP
+# CARGAR VARIABLES DE ENTORNO ANTES DE INICIAR
 load_dotenv()
 
 # RATE LIMITING
@@ -27,7 +27,7 @@ def get_real_ip(request: Request):
 limiter = Limiter(key_func=get_real_ip, default_limits=["60/minute"])
 
 
-# ESCUDO DE TAMAÑO DE ARCHIVOS (PAYLOAD LIMIT)
+# TAMAÑO DE ARCHIVOS (PAYLOAD LIMIT)
 class LimitUploadSize(BaseHTTPMiddleware):
     def __init__(self, app, max_upload_size: int):
         super().__init__(app)
@@ -54,15 +54,15 @@ app = FastAPI(
     description="API para la aplicacion de Lengua de Senas Peruana - Modelo local 137 clases",
 )
 
-# APLICAR RATE LIMITING EN FASTAPI
+# RATE LIMITING EN FASTAPI
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(SlowAPIMiddleware)
 
-# APLICAR LÍMITE DE TAMAÑO (10 MB = 10 * 1024 * 1024 bytes)
+# LÍMITE DE TAMAÑO (10 MB = 10 * 1024 * 1024 bytes)
 app.add_middleware(LimitUploadSize, max_upload_size=10_485_760)
 
-# CONFIGURACIÓN CORS
+# CONFIGURACIÓN CORS: Agrear los dominios de frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[

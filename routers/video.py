@@ -3,7 +3,7 @@ from fastapi.responses import StreamingResponse
 import tempfile
 import os
 import httpx
-import pathlib  # <--- Nueva importación para leer la extensión
+import pathlib
 from .modelo137 import process_video, predict
 
 router = APIRouter(prefix="/video", tags=["Video Processing"])
@@ -13,14 +13,11 @@ router = APIRouter(prefix="/video", tags=["Video Processing"])
 async def stream_video(url: str):
     try:
         async with httpx.AsyncClient(follow_redirects=True, timeout=60) as client:
-            # Primera petición para obtener la cookie de confirmación
             response = await client.get(url)
 
-            # Google Drive pide confirmación para archivos grandes
             if "virus scan warning" in response.text.lower() or "confirm" in str(
                 response.url
             ):
-                # Extrae el token de confirmación
                 import re
 
                 token_match = re.search(r"confirm=([0-9A-Za-z_-]+)", response.text)
@@ -28,7 +25,6 @@ async def stream_video(url: str):
                     confirm_url = f"{url}&confirm={token_match.group(1)}"
                     response = await client.get(confirm_url)
                 else:
-                    # Intenta con uuid
                     uuid_match = re.search(r"uuid=([0-9A-Za-z_-]+)", response.text)
                     if uuid_match:
                         confirm_url = f"{url}&confirm=t&uuid={uuid_match.group(1)}"

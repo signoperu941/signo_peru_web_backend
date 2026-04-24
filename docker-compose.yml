@@ -33,19 +33,22 @@ services:
     build: .
     container_name: backend-ia
     ports:
-      - "8000:8000"
+      - "80:8000"
     restart: always
     env_file:
       - .env
     depends_on:
       - postgres
       - minio
+    environment:
+      - CUDA_VISIBLE_DEVICES="-1"
+      - TF_CPP_MIN_LOG_LEVEL="2"
 
   # 4. Túnel de Cloudflare
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: tunnel-cloudflare
-    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate --protocol http2 run --token ${CF_TUNNEL_TOKEN}
     restart: always
     depends_on:
       - signoperu-api

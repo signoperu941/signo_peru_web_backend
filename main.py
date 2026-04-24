@@ -67,11 +67,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://signo-peru-web-dun.vercel.app",
-        "https://signo-peru-web-cesar424s-projects.vercel.app",
         "https://api.buenfeps.site",
         "https://signoperu.pages.dev",
         "https://signoperu.ulima.edu.pe",
+        "http://api.signoperu.ulima.edu.pe"
     ],
     allow_credentials=True,
     allow_methods=["*"],
